@@ -56,6 +56,13 @@ app.get('/inicio', (req,res) =>{
     currentYear: new Date().getFullYear()
   })
 })
+
+app.get('/noticias', (req,res) =>{
+  res.render('contactar.hbs', {
+    pageTitle: 'Noticias',
+    currentYear: new Date().getFullYear()
+  })
+})
 /*app.listen(3000, () =>{
   console.log('App listening on port 3000')
 })*/
