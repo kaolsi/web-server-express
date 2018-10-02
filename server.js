@@ -8,7 +8,9 @@ const middleware = require('./middleware')
 
 const { consoleLogMiddleware,fileLogMiddleware } = require('./middleware')
 
-// const hbs = require('hbs')
+const hbs = require('hbs')
+hbs.registerPartials(path.join(__dirname, 'views', 'partials'))
+
 app.set('view engine', 'hbs'); // clave valor
 
 
@@ -42,10 +44,18 @@ app.get('/', (req, res) => {
 app.listen(3000)
 
 app.get('/contactar', (req,res) =>{
-  //res.send({ nombre: 'lolo', correo: 'lolo@lolez.com' })
-  res.render('contactar')
+  res.render('contactar.hbs', {
+    pageTitle: 'Contactar',
+    currentYear: new Date().getFullYear()
+  })
 })
 
+app.get('/inicio', (req,res) =>{
+  res.render('contactar.hbs', {
+    pageTitle: 'Inicio',
+    currentYear: new Date().getFullYear()
+  })
+})
 /*app.listen(3000, () =>{
   console.log('App listening on port 3000')
 })*/
